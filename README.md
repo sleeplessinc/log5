@@ -1,17 +1,20 @@
 
-node-log - A simple logging utility.  
+log5 - A simple logging utility.  
 ------------------------------------
 
 It simply creates global functions log1(), log2(), ..., log5(), as well as a global
 variable called logLevel.  The functions all take a string argument which will be 
-written to stdout, prefixed with a timestamp, if logLevel is >= to the number in
-the function.
+written to stdout, prefixed with a timestamp, if logLevel is greater than or equal
+to the number in the function name.
 
-For example:
+## Install
+	
+	npm install log5
 
-	require("node-log")
+## Example
+
+	require("log5")
 	logLevel = 2
-
 	log2("This prints")
 	log3("This doesn't")
 
@@ -21,7 +24,6 @@ and log5() would be for more "debug" level messages.
 
 It's simple, it gets the job done, and lets you change the log output at runtime if you like, by just
 setting logLevel.
-
 
 ## License
 
