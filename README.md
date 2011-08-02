@@ -1,6 +1,5 @@
 
-log5 - A simple logging utility.  
-------------------------------------
+# log5 - A simple logging utility.  
 
 It simply creates global functions log1(), log2(), ..., log5(), as well as a global
 variable called logLevel.  The functions all take a string argument which will be 
