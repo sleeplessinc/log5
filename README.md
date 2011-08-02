@@ -1,8 +1,9 @@
 
 # log5 - A simple logging utility.  
 
-It simply creates global functions log1(), log2(), ..., log5(), as well as a global
-variable called logLevel.  The functions all take a string argument which will be 
+This module simply creates global functions log1(), log2(), log3(), log4(), and log5(),
+as well as a global variable called logLevel.
+The functions all take a string argument which will be 
 written to stdout, prefixed with a timestamp, if logLevel is greater than or equal
 to the number in the function name.
 
