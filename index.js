@@ -37,36 +37,33 @@ var ts = function() {
 
 }
 
-exports.logLevel = 0
-
-exports.log = function(l) {
-	var n = 0, ll = l
-
-	if(typeof l == "number") {
-		// first arg is a number
-		if(arguments.length == 1) {
-			// just set logLevel to l
-			exports.logLevel = l
-			return
+exports.mkLog = function() {
+	var o = {}
+	o.logLevel = 0
+	return function(l) {
+		var n = 0, ll = l
+		if(typeof l == "number") {
+			// first arg is a number
+			if(arguments.length == 1) {
+				// just set logLevel to l
+				o.logLevel = l
+				return
+			}
+			// remove the number from arguments array
+			n = 1
 		}
-		// remove the number from arguments array
-		n = 1
+		else {
+			// first arg is not a number, so default log level for this call is 0
+			ll = 0
+		}
+		if(o.logLevel < ll)
+			return;
+		process.stdout.write(ts()+"["+o.logLevel+"] ")
+		for(var i = n; i < arguments.length; i++)
+			process.stdout.write(" "+arguments[i])
+		process.stdout.write("\n");
 	}
-	else {
-		// first arg is not a number, so default log level for this call is 0
-		ll = 0
-	}
-
-	if(exports.logLevel < ll)
-		return;
-
-	process.stdout.write(ts()+"["+exports.logLevel+"] ")
-	for(var i = n; i < arguments.length; i++)  {
-		process.stdout.write(" "+arguments[i])
-	}
-	process.stdout.write("\n");
 }
-
 
 if(require.main === module) {
 	require('./test.js')
