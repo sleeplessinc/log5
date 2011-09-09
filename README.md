@@ -1,33 +1,42 @@
 
 # log5 - A simple logging utility.  
 
-This module simply creates global functions log1(), log2(), log3(), and log4(),
-as well as a global variable called logLevel.
-The functions all take a string argument which will be 
-written to stdout, prefixed with a timestamp, if logLevel is greater than or equal
-to the number in the function name.
-
-You can also install the functions into an object of your choice with inherit(o).
-This will give that object it's own private, independent set of log functions and logLevel.
+Provides a simple module with a log() function and a logLevel value.
+The log() function writes the msg to stdout, prefixed with a timestamp, if
+the logLevel is greater than or equal to the number in the first argument.
 
 
 ## Install
 	
 	npm install log5
 
-## Example
+## Examples
 
-	require("log5")
-	logLevel = 2
-	log2("This prints")
-	log3("This doesn't")
+	log5 = require("log5")
+	log5.logLevel = 2
+	log(2, "This prints")
+	log(3, "This doesn't")
 
-You are free to make up whatever meanings you want for a given log level.
-In practice, log1() messages are typically for things that you probably always want to print
-and log4() would be for more "debug" level messages.
+You are free to make up whatever level numbers you want, and assign what ever meaning to them that 
+you want.
 
-It's simple, it gets the job done, and lets you change the log output at runtime if you like, by just
-changing logLevel.
+It's very simple, and gets the job done, and allows you to change the log output at
+runtime if you like, by just changing the logLevel.
+
+## More examples
+
+	log5 = require("log5")			// log level defaults to 0
+	log = log5.log					// for convenience
+	log(1, "does not print")		// because logLevel is 0
+	log(1)							// same as log5.logLevel = 1
+	log(1, "prints")				
+	log(-1)							// sure, why not?
+	log(0, "does not print")
+	log("does not print")			// if you don't include a # as first arg, 0 is used
+	log(0)							// same as log5.logLevel = 1
+	log("prints")		
+	log("foo", 7, ["bar","baz"])	// logs "foo 7 bar,baz"
+	log(3, "foo", 7, ["bar","baz"])	// does not print - logLevel is 0
 
 ## License
 
