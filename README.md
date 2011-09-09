@@ -1,9 +1,9 @@
 
 # log5 - A simple logging utility.  
 
-Provides a simple module with a log() function and a logLevel value.
-The log() function writes the msg to stdout, prefixed with a timestamp, if
-the logLevel is greater than or equal to the number in the first argument.
+Provides a simple module with a log() function and a log level value.
+The log() function writes the msg to stdout, prefixed with a timestamp, when
+the log level is greater than or equal to the number in the first argument.
 
 
 ## Install
@@ -12,8 +12,8 @@ the logLevel is greater than or equal to the number in the first argument.
 
 ## Examples
 
-	log5 = require("log5")
-	log5.logLevel = 2
+	log = require("log5").mkLog()
+	log(2)
 	log(2, "This prints")
 	log(3, "This doesn't")
 
@@ -21,14 +21,14 @@ You are free to make up whatever level numbers you want, and assign what ever me
 you want.
 
 It's very simple, and gets the job done, and allows you to change the log output at
-runtime if you like, by just changing the logLevel.
+runtime if you like, by just changing the log level.
 
 ## More examples
 
-	log5 = require("log5")			// log level defaults to 0
+	log = require("log5").mkLog()	// log level defaults to 0
 	log = log5.log					// for convenience
-	log(1, "does not print")		// because logLevel is 0
-	log(1)							// same as log5.logLevel = 1
+	log(1, "does not print")		// because log level is 0
+	log(1)							// set log level to 1
 	log(1, "prints")				
 	log(-1)							// sure, why not?
 	log(0, "does not print")
@@ -36,7 +36,7 @@ runtime if you like, by just changing the logLevel.
 	log(0)			
 	log("prints now")		
 	log("foo", 7, ["bar","baz"])	// logs "foo 7 bar,baz"
-	log(3, "foo", 7, ["bar","baz"])	// does not print - logLevel is 0
+	log(3, "foo", 7, ["bar","baz"])	// does not print - log level is 0
 
 ## License
 
