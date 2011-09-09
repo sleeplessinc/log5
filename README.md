@@ -33,8 +33,8 @@ runtime if you like, by just changing the logLevel.
 	log(-1)							// sure, why not?
 	log(0, "does not print")
 	log("does not print")			// if you don't include a # as first arg, 0 is used
-	log(0)							// same as log5.logLevel = 1
-	log("prints")		
+	log(0)			
+	log("prints now")		
 	log("foo", 7, ["bar","baz"])	// logs "foo 7 bar,baz"
 	log(3, "foo", 7, ["bar","baz"])	// does not print - logLevel is 0
 
