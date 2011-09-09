@@ -40,7 +40,8 @@ var ts = function() {
 exports.logLevel = 0
 
 exports.log = function(l) {
-	var n = 0
+	var n = 0, ll = l
+
 	if(typeof l == "number") {
 		// first arg is a number
 		if(arguments.length == 1) {
@@ -53,15 +54,16 @@ exports.log = function(l) {
 	}
 	else {
 		// first arg is not a number, so default log level for this call is 0
-		l = 0
+		ll = 0
 	}
 
-	if(exports.logLevel < l)
+	if(exports.logLevel < ll)
 		return;
 
-	process.stdout.write(ts())
-	for(var i = n; i < arguments.length; i++) 
-		process.stdout.write(" "+arguments[i]);
+	process.stdout.write(ts()+"["+exports.logLevel+"] ")
+	for(var i = n; i < arguments.length; i++)  {
+		process.stdout.write(" "+arguments[i])
+	}
 	process.stdout.write("\n");
 }
 
