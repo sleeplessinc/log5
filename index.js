@@ -1,6 +1,4 @@
 
-var num = 4
-
 var n0 = function(n) {
 	if(n >= 0 && n < 10)
 		return "0"+n
@@ -25,22 +23,13 @@ var mkf = function(l, o) {
 	}
 }
 
-exports.inherit = function(o, ll) {
-	var i
-	o.logLevel = ll || 0
-	for(i = 0; i <= num; i++) {
-		o["log"+i] = mkf(i, o)
-	}
+var num = 3
+while(num >= 0) {
+	exports["log"+num] = mkf(num, exports)
+	num--;
 }
 
-exports.inherit(exports)
-
-// globalize for backward compatibility
-global.logLevel = 0
-global.log0 = exports.log0
-global.log1 = exports.log1
-global.log2 = exports.log2
-global.log3 = exports.log3
+exports.logLevel = 0
 
 if(require.main === module) {
 	require('./test.js')
