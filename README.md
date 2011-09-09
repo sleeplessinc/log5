@@ -1,11 +1,15 @@
 
 # log5 - A simple logging utility.  
 
-This module simply creates global functions log1(), log2(), log3(), log4(), and log5(),
+This module simply creates global functions log1(), log2(), log3(), and log4(),
 as well as a global variable called logLevel.
 The functions all take a string argument which will be 
 written to stdout, prefixed with a timestamp, if logLevel is greater than or equal
 to the number in the function name.
+
+You can also install the functions into an object of your choice with inherit(o).
+This will give that object it's own private, independent set of log functions and logLevel.
+
 
 ## Install
 	
@@ -20,10 +24,10 @@ to the number in the function name.
 
 You are free to make up whatever meanings you want for a given log level.
 In practice, log1() messages are typically for things that you probably always want to print
-and log5() would be for more "debug" level messages.
+and log4() would be for more "debug" level messages.
 
 It's simple, it gets the job done, and lets you change the log output at runtime if you like, by just
-setting logLevel.
+changing logLevel.
 
 ## License
 
