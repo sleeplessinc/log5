@@ -37,7 +37,8 @@ var ts = function() {
 
 }
 
-exports.mkLog = function() {
+exports.mkLog = function(prefix) {
+	prefix = " " + (prefix || "")
 	var o = {}
 	o.logLevel = 0
 	return function(l) {
@@ -58,7 +59,7 @@ exports.mkLog = function() {
 		}
 		if(o.logLevel < ll)
 			return;
-		process.stdout.write(ts()+"["+o.logLevel+"] ")
+		process.stdout.write(ts()+prefix) // " ["+o.logLevel+"] ")
 		for(var i = n; i < arguments.length; i++)
 			process.stdout.write(" "+arguments[i])
 		process.stdout.write("\n");
