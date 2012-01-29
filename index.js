@@ -41,28 +41,27 @@ exports.mkLog = function(prefix) {
 	prefix = " " + (prefix || "")
 	var o = {}
 	o.logLevel = 0
-	return function(l) {
+	return function logFunc(l) {
 		var n = 0, ll = l
 		if(typeof l == "number") {
 			// first arg is a number
 			if(arguments.length == 1) {
 				// just set logLevel to l
 				o.logLevel = l
-				return
+				return logFunc
 			}
-			// remove the number from arguments array
-			n = 1
+			n = 1	// remove the number from arguments array
 		}
 		else {
-			// first arg is not a number, so default log level for this call is 0
-			ll = 0
+			ll = 0	// first arg is not number, log level for this call is 0
 		}
 		if(o.logLevel < ll)
-			return;
+			return logFunc
 		process.stdout.write(ts()+prefix) // " ["+o.logLevel+"] ")
 		for(var i = n; i < arguments.length; i++)
 			process.stdout.write(" "+arguments[i])
 		process.stdout.write("\n");
+		return logFunc
 	}
 }
 

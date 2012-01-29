@@ -12,10 +12,9 @@ the log level is greater than or equal to the number in the first argument.
 
 ## Examples
 
-	log = require("log5").mkLog()
-	log(2)
+	log = require("log5").mkLog("prefix:").log(2)	// creates log w/prefix, set log level to 2
 	log(2, "This prints")
-	log(3, "This doesn't")
+	log(3, "This does not")	
 
 You are free to make up whatever level numbers you want, and assign what ever meaning to them that 
 you want.
@@ -25,22 +24,21 @@ runtime if you like, by just changing the log level.
 
 ## More examples
 
-	log = require("log5").mkLog()	// log level defaults to 0
-	log = log5.log					// for convenience
-	log(1, "does not print")		// because log level is 0
-	log(1)							// set log level to 1
-	log(1, "prints")				
-	log(-1)							// sure, why not?
+	log = require("log5").mkLog("foo:")	// log level defaults to 0
+	log(1, "does not print")			// because log level is 0
+	log(1)								// set log level to 1
+	log(1, "prints")					// output is "foo: prints"
+	log(-1)								// sure, why not?
 	log(0, "does not print")
-	log("does not print")			// if you don't include a # as first arg, 0 is used
-	log(0)			
-	log("prints now")		
-	log("foo", 7, ["bar","baz"])	// logs "foo 7 bar,baz"
-	log(3, "foo", 7, ["bar","baz"])	// does not print - log level is 0
+	log("does not print")				// if you don't include number as first arg, 0 is used
+	log(0)								// sets log level to 0
+	log("prints now")					// outputs "foo: prints now"
+	log("foo", 7, ["bar","baz"])		// outputs "foo: foo 7 bar,baz"
+	log(3, "foo", 7, ["bar","baz"])		// does not print - log level is 0
 
 ## License
 
-	Copyright 2011 Sleepless Software Inc. All rights reserved.
+	Copyright 2012 Sleepless Software Inc. All rights reserved.
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to

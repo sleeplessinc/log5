@@ -1,14 +1,17 @@
 
-l = require("./index.js")
+log5 = require("./index.js")
 
-console.log(l.logLevel !== "undefined" ? "ok" : "FAIL")
-l.logLevel = 2
-l.log(1, "ok")
-l.log(3, "FAIL")
-l.logLevel = 4
-l.log(3, "ok")
-l.log(3, "ok", 4, ["you","and","you"])
+log = log5.mkLog("LOG5TEST")
 
+log(1)
+log(1, "this should print")
+log(2, "THIS SHOULD NOT PRINT")
+
+log(2)
+log(1, "this should print")
+log(2, "this should print")
+log(3, "THIS SHOULD NOT PRINT")
+log(2, "foo", 13, ["a", "b"], {x:17, y:"bar"})
 
 
 
