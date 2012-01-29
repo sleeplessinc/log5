@@ -12,7 +12,8 @@ the log level is greater than or equal to the number in the first argument.
 
 ## Examples
 
-	log = require("log5").mkLog("prefix:").log(2)	// creates log w/prefix, set log level to 2
+	log = require("log5").mkLog("prefix:")	// creates log w/prefix
+	log(2)
 	log(2, "This prints")
 	log(3, "This does not")	
 
