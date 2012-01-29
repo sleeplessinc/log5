@@ -1,6 +1,6 @@
 {
   "name": "log5",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "description" : "A simple logging utility",
   "author": "Joe Hitchens <joe@sleepless.com> (sleepless.com)",
   "license": {
