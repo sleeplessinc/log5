@@ -1,45 +1,49 @@
 
 # log5 - Simple logging utility.  
 
-Provides a simple module with a log() function and a log level value.
-The log() function writes the msg to stdout, prefixed with a timestamp, when
-the log level is greater than or equal to the number in the first argument.
+Provides a 5 level logging facility with timestamped lines.
 
+The levels are: 1 = ERRORS, 2 = WARNINGS, 3 = INFO, 4 = VERBOSE, and 5 = DEBUG 
 
 ## Install
 	
 	npm install log5
 
-## Examples
+## Simple Examples
 
-	log = require("log5").mkLog("prefix:")	// creates log w/prefix
-	log(2)
-	log(2, "This prints")
-	log(3, "This does not")	
+	// call by level type initial (E, W, I, V, D)
+	log = require("log5");	// log is a default logger function set to level 3
+	log.E("Error");			// writes "Error" to console
+	log.I("Info");			// writes "Info" to console
+	log.V("Verbose");		// doesn't write anything.
+	log(4);					// change log level to 4
+	log.V("Verbose");		// writes "Verbose" to console
 
-You are free to make up whatever level numbers you want, and assign what ever meaning to them that 
-you want.
+	// Usage by number
+	log(2, "Warn");			// writes "Warn" to console
+	log(4, "Verbose");		// writes "Verbose" to console
+	log(5, "Debug");		// doesn't write anything.
 
-It's very simple, and gets the job done, and allows you to change the log output at
-runtime if you like, by just changing the log level.
 
-## More examples
+## Loggers with prefix
 
-	log = require("log5").mkLog("foo:")	// log level defaults to 0
-	log(1, "does not print")			// because log level is 0
-	log(1)								// set log level to 1
-	log(1, "prints")					// output is "foo: prints"
-	log(-1)								// sure, why not?
-	log(0, "does not print")
-	log("does not print")				// if you don't include number as first arg, 0 is used
-	log(0)								// sets log level to 0
-	log("prints now")					// outputs "foo: prints now"
-	log("foo", 7, ["bar","baz"])		// outputs "foo: foo 7 bar,baz"
-	log(3, "foo", 7, ["bar","baz"])		// does not print - log level is 0
+	log_foo = require("log5")("Foo: ");
+	log_foo.I("Info");			// writes "Foo: Info" to console
+
+
+## Use with "g"
+
+If you combine the log5 module with the g module, you can do this, to
+globalize the log5 functions and set a log level of 1
+
+	require("g")("log5")(1);
+	E("this prints");
+	W("this doesn't");
+
 
 ## License
 
-	Copyright 2012 Sleepless Software Inc. All rights reserved.
+	Copyright 2015 Sleepless Software Inc. All rights reserved.
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
 	of this software and associated documentation files (the "Software"), to

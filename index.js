@@ -72,7 +72,7 @@ var mkLog = function(prefix) {
 }
 
 
-var defLog = mkLog("")(2);
+var defLog = mkLog("")(3);
 defLog.mkLog = mkLog;
 
 module.exports = defLog;
