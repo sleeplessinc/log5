@@ -1,5 +1,5 @@
 /*
-Copyright 2011 Sleepless Software Inc. All rights reserved.
+Copyright 2015 Sleepless Software Inc. All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
@@ -37,11 +37,11 @@ var ts = function() {
 
 }
 
-exports.mkLog = function(prefix) {
+var mkLog = function(prefix) {
 	prefix = " " + (prefix || "")
 	var o = {}
 	o.logLevel = 0
-	return function logFunc(l) {
+	var f = function logFunc(l) {
 		var n = 0, ll = l
 		if(typeof l == "number") {
 			// first arg is a number
@@ -59,11 +59,23 @@ exports.mkLog = function(prefix) {
 			return logFunc
 		process.stdout.write(ts()+prefix) // " ["+o.logLevel+"] ")
 		for(var i = n; i < arguments.length; i++)
-			process.stdout.write(" "+arguments[i])
+			process.stdout.write(arguments[i])
 		process.stdout.write("\n");
 		return logFunc
 	}
+	f.E = function(s) { f(1, "******* " + s); }	// error
+	f.W = function(s) { f(2, "- - - - " + s); }	// warning
+	f.I = function(s) { f(3, s); }				// info
+	f.V = function(s) { f(4, s); }				// verbose
+	f.D = function(s) { f(5, s); }				// debug
+	return f;
 }
+
+
+var defLog = mkLog("")(2);
+defLog.mkLog = mkLog;
+
+module.exports = defLog;
 
 if(require.main === module) {
 	require('./test.js')

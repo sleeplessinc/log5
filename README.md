@@ -1,5 +1,5 @@
 
-# log5 - A simple logging utility.  
+# log5 - Simple logging utility.  
 
 Provides a simple module with a log() function and a log level value.
 The log() function writes the msg to stdout, prefixed with a timestamp, when

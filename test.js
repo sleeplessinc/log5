@@ -1,17 +1,26 @@
 
 log5 = require("./index.js")
 
-log = log5.mkLog("LOG5TEST")
+test = function(logger) {
+	for(var i = 0; i < 6; i++) {
+		logger(i);
 
-log(1)
-log(1, "this should print")
-log(2, "THIS SHOULD NOT PRINT")
+		logger(1, "n=1");
+		logger(2, "n=2");
+		logger(3, "n=3");
+		logger(4, "n=4");
+		logger(5, "n=5");
 
-log(2)
-log(1, "this should print")
-log(2, "this should print")
-log(3, "THIS SHOULD NOT PRINT")
-log(2, "foo", 13, ["a", "b"], {x:17, y:"bar"})
+		logger.E("f=E");
+		logger.W("f=W");
+		logger.I("f=I");
+		logger.V("f=V");
+		logger.D("f=D");
+	}
+}
+
+test(log5);
+test(log5.mkLog("LOG5TEST "))
 
 
 
