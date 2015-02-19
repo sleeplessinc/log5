@@ -33,7 +33,7 @@ The levels are: 1 = ERRORS, 2 = WARNINGS, 3 = INFO, 4 = VERBOSE, and 5 = DEBUG
 
 ## Use with "g"
 
-If you combine the log5 module with the g module, you can do this, to
+If you combine the "log5" module with the "g" module, you can do this, to
 globalize the log5 functions and set a log level of 1
 
 	require("g")("log5")(1);
