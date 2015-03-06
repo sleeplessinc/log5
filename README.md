@@ -1,7 +1,7 @@
 
 # log5 - Simple logging utility.  
 
-Provides a 5 level logging facility with timestamped lines.
+Provides a 5-level logging facility with timestamps.
 
 The levels are: 1 = ERRORS, 2 = WARNINGS, 3 = INFO, 4 = VERBOSE, and 5 = DEBUG 
 
@@ -62,3 +62,4 @@ globalize the log5 functions and set a log level of 1
 	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 	IN THE SOFTWARE. 
+
