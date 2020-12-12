@@ -62,7 +62,10 @@ var mkLog = function(prefix) {
 		process.stdout.write(ts()+prefix) // " ["+o.logLevel+"] ")
 		for(var i = n; i < arguments.length; i++) {
 			let x = arguments[i];
-			if( x !== null && x !== undefined && typeof x === "object" ) {
+			if( x === undefined ) {
+				x = "undefined";
+			}
+			if( typeof x === "object" ) {
 				x = util.inspect( x, { depth: 10 } );
 			}
 			process.stdout.write(x);
