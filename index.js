@@ -20,6 +20,8 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE. 
 */
 
+let util = require( "util" );
+
 var n0 = function(n) {
 	if(n >= 0 && n < 10)
 		return "0"+n
@@ -58,8 +60,13 @@ var mkLog = function(prefix) {
 		if(o.logLevel < ll)
 			return logFunc
 		process.stdout.write(ts()+prefix) // " ["+o.logLevel+"] ")
-		for(var i = n; i < arguments.length; i++)
-			process.stdout.write(arguments[i])
+		for(var i = n; i < arguments.length; i++) {
+			let x = arguments[i];
+			if( typeof x === "object" ) {
+				x = util.inspect( x, { depth: 10 } );
+			}
+			process.stdout.write(x);
+		}
 		process.stdout.write("\n");
 		return logFunc
 	}

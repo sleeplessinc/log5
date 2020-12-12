@@ -1,7 +1,7 @@
 {
   "name": "log5",
-  "version": "2.0.0",
-  "description" : "A simple logging utility",
+  "version": "2.1.0",
+  "description": "A simple logging utility",
   "author": "Joe Hitchens <joe@sleepless.com> (sleepless.com)",
   "license": {
     "type": "MIT",
