@@ -21,6 +21,7 @@ IN THE SOFTWARE.
 */
 
 let util = require( "util" );
+let style = require( "./ansi-styles.js" );
 
 var n0 = function(n) {
 	if(n >= 0 && n < 10)
@@ -73,11 +74,11 @@ var mkLog = function(prefix) {
 		process.stdout.write("\n");
 		return logFunc
 	}
-	f.E = function(s) { f(1, "******* " + s); }	// error
-	f.W = function(s) { f(2, "- - - - " + s); }	// warning
-	f.I = function(s) { f(3, s); }				// info
-	f.V = function(s) { f(4, s); }				// verbose
-	f.D = function(s) { f(5, s); }				// debug
+	f.E = function(s) { f(1, `${style.red.open}******* ${s}${style.red.close}`); }	// error
+	f.W = function(s) { f(2, `${style.yellow.open}- - - - ${s}${style.yellow.close}`); }	// warning
+	f.I = function(s) { f(3, `${style.cyan.open}${s}${style.cyan.close}`); }				// info
+	f.V = function(s) { f(4, `${style.white.open}${s}${style.white.close}`); }				// verbose
+	f.D = function(s) { f(5, `${style.magenta.open}${s}${style.magenta.close}`); }				// debug
 	return f;
 }
 
