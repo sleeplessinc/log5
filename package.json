@@ -3,9 +3,6 @@
   "version": "2.4.0",
   "description": "A simple logging utility",
   "author": "Joe Hitchens <joe@sleepless.com> (sleepless.com)",
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/sleeplessinc/log5/raw/master/LICENSE"
-  },
+  "license": "ISC",
   "repository": "git://github.com/sleeplessinc/log5.git"
 }
